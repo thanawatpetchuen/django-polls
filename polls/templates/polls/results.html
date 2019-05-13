@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  {% include './head.html' %}
+  <body>
+    {% include './nav.html' %}
+    <main role="main" class="container">
+    <div class="starter-template">
+       <h1>{{ question.question_text }}</h1>
+        <ul>
+            {% for choice in question.choice_set.all %}
+                <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    </div>
+    </main><!-- /.container -->
+   {% include './script.html' %}
+  </body>
+</html>
